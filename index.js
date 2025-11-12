@@ -1,11 +1,29 @@
 const express = require('express') 
 const app = express() 
 
-app.get('/', function(req, res){ 
-    res.send('aaa world')
+app.use(express.json())
+
+const herois = [
+    'Mulher Maravilha', 
+    'Superman',
+    'Batman'
+]
+
+app.get('/herois', function(req, res){ 
+    res.send(herois)
 })
 
-app.get('/pastel', (req, res) => {res.send('seu paster chegou bb')})
+app.get('/herois/:id', (req, res) =>{
+    const id = req.params.id //-> recebo o parametro da minha rota
+    res.send(herois[id-1])
+})
 
+app.post('/herois', (req, res)=>{
+    let novoHeroi = req.body.personagem
+    herois.push(novoHeroi)
+    res.send('Novo heroi cadastrado com sucesso !')
+})
 
-app.listen(3000) 
+app.listen(3000, () =>{
+    console.log('Rodando na porta 3000')
+}) 
