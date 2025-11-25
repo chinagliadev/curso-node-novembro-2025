@@ -19,10 +19,12 @@ app.get('/herois/:id', (req, res) =>{
 })
 
 app.post('/herois', (req, res)=>{
-    let novoHeroi = req.body.personagem
+    let novoHeroi = req.body.nome
     herois.push(novoHeroi)
     res.send('Novo heroi cadastrado com sucesso !')
 })
+
+
 
 app.listen(3000, () =>{
     console.log('Rodando na porta 3000')
