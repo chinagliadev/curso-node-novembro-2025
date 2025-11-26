@@ -14,7 +14,7 @@ app.get('/herois', function(req, res){
 })
 
 app.get('/herois/:id', (req, res) =>{
-    const id = req.params.id //-> recebo o parametro da minha rota
+    const id = req.params.id 
     res.send(herois[id-1])
 })
 
@@ -23,8 +23,6 @@ app.post('/herois', (req, res)=>{
     herois.push(novoHeroi)
     res.send('Novo heroi cadastrado com sucesso !')
 })
-
-
 
 app.listen(3000, () =>{
     console.log('Rodando na porta 3000')
